@@ -1,0 +1,41 @@
+{
+  "name" : "test1",
+  "jobMode" : "VISUAL",
+  "description" : "",
+  "role" : "arn:aws:iam::568765279027:role/service-role/AWSGlueServiceRole-S3",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-568765279027-us-east-1/scripts/test1.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-568765279027-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-568765279027-us-east-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 480,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "codeGenConfigurationNodes" : "{\"node-1745227194286\":{\"S3CsvSource\":{\"AdditionalOptions\":{\"EnableSamplePath\":false,\"SamplePath\":\"s3://amazon-pinpoint-mt/2023/11/09/14/PUT-S3-xaQ91-1-2023-11-09-14-38-47-5c62c712-f82d-4594-ace5-f2ec6d0db0ad\"},\"Escaper\":\"\",\"Exclusions\":[],\"Name\":\"Amazon S3\",\"OptimizePerformance\":false,\"OutputSchemas\":[{\"Columns\":[{\"Name\":\"event_type\",\"Type\":\"string\"},{\"Name\":\"event_timestamp\",\"Type\":\"bigint\"},{\"Name\":\"event_version\",\"Type\":\"string\"},{\"Name\":\"application\",\"Type\":\"string\"},{\"Name\":\"client\",\"Type\":\"struct<client_id:string>\"},{\"Name\":\"device\",\"Type\":\"string\"},{\"Name\":\"session\",\"Type\":\"unknown\"},{\"Name\":\"attributes\",\"Type\":\"struct<x-amz-request-id:string>\"}]}],\"Paths\":[\"s3://amazon-pinpoint-mt/2023/\"],\"QuoteChar\":\"quote\",\"Recurse\":true,\"Separator\":\"comma\",\"WithHeader\":false}},\"node-1745227208151\":{\"S3GlueParquetTarget\":{\"AutoDataQuality\":{\"EvaluationContext\":\"EvaluateDataQuality_node1745225745932\",\"IsEnabled\":true},\"Compression\":\"snappy\",\"Inputs\":[\"node-1745227194286\"],\"Name\":\"Amazon S3\",\"PartitionKeys\":[],\"Path\":\"s3://mt-snow-bucket/data/\",\"SchemaChangePolicy\":{\"EnableUpdateCatalog\":false}}}}",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "test_blue_jobs",
+    "branch" : "main",
+    "folder" : "jobs"
+  }
+}
